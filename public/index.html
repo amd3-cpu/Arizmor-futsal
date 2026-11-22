@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0B2A1F">
+<meta name="description" content="Booking lapangan futsal online. Cek jadwal kosong, bayar DP, dapatkan kode dan QR booking.">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<title>Gol Arena Futsal – Booking Lapangan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0E1F17;--muted:#52625A;--bg:#F6F3EB;--card:#fff;--line:#E2DDCF;--forest:#0B2A1F;--lime:#C9F23C;--danger:#9B2C20;--warn:#F3E3A6;--shadow:0 24px 48px -24px rgba(11,42,31,.35);--serif:'Fraunces',Georgia,serif;--sans:'Plus Jakarta Sans',system-ui,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;font:400 16px/1.6 var(--sans);color:var(--ink);background:var(--bg)}
+a{color:inherit;text-decoration:none}button,input{font:inherit;color:inherit}
+:focus-visible{outline:3px solid #2E9B63;outline-offset:2px}
+.w{max-width:1160px;margin:0 auto;padding:0 24px}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1F6B45}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.05;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(34px,4.6vw,52px)}h3{font-size:24px}
+.sec{padding:96px 0}.head{display:grid;gap:12px;max-width:620px;margin-bottom:40px}.head p{margin:0;color:var(--muted);font-size:18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 26px;border-radius:999px;border:1.5px solid transparent;font-weight:700;cursor:pointer;transition:transform .15s,background .15s,opacity .15s}
+.btn:hover:not(:disabled){transform:translateY(-1px)}.btn:disabled{opacity:.4;cursor:not-allowed}
+.b1{background:var(--forest);color:var(--lime)}.b1:hover:not(:disabled){background:#12402F}
+.b2{border-color:var(--forest);color:var(--forest);background:transparent}.b2:hover:not(:disabled){background:rgba(11,42,31,.06)}
+.bl{background:var(--lime);color:var(--forest)}.bd{border-color:var(--danger);color:var(--danger);background:transparent}
+.q{background:none;border:0;padding:8px 0;min-height:44px;color:#1F6B45;font-weight:700;text-decoration:underline;text-underline-offset:3px;cursor:pointer;text-align:left}
+header.top{position:sticky;top:0;z-index:20;background:rgba(11,42,31,.92);backdrop-filter:blur(12px);color:#F3F5EE}
+header.top .w{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.logo{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-size:22px;font-weight:600}
+nav{display:flex;gap:28px;font-size:15px;font-weight:500}nav a{opacity:.85}nav a:hover{opacity:1}
+@media(max-width:820px){nav{display:none}}
+.hero{position:relative;background:#06160F center/cover;color:#F3F5EE;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(6,22,15,.94) 8%,rgba(6,22,15,.6) 55%,rgba(6,22,15,.25))}
+.hero .w{position:relative;padding-top:clamp(72px,11vw,150px);padding-bottom:clamp(120px,14vw,170px);display:grid;gap:28px;max-width:1160px}
+.hero h1{font-size:clamp(46px,7.4vw,92px);max-width:11em}.hero h1 em{font-style:italic;color:var(--lime)}
+.hero p{margin:0;max-width:480px;font-size:19px;color:#D3E0D7}.hero .row{display:flex;flex-wrap:wrap;gap:12px}
+.hero .b2{border-color:rgba(243,245,238,.5);color:#F3F5EE}
+.facts{position:relative;z-index:2;margin:-64px auto 0;display:grid;grid-template-columns:repeat(4,1fr);background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);overflow:hidden}
+.facts div{padding:22px 24px;display:grid;gap:2px;border-right:1px solid var(--line)}.facts div:last-child{border:0}
+.facts small{color:var(--muted);font-size:13px}.facts b{font-family:var(--serif);font-size:24px;font-weight:500}
+@media(max-width:860px){.facts{grid-template-columns:1fr 1fr}.facts div:nth-child(2){border-right:0}.facts div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:48px;align-items:start}
+@media(max-width:1000px){.grid{grid-template-columns:1fr}}
+.step{display:flex;align-items:center;gap:12px;margin:0 0 14px}.step i{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--forest);color:var(--lime);font:600 15px var(--serif);font-style:normal}
+.blk{margin-bottom:36px}
+.dates{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px}
+.chip{flex:0 0 auto;min-width:72px;padding:10px 8px;border:1.5px solid var(--line);border-radius:16px;background:var(--card);cursor:pointer;display:grid;justify-items:center;line-height:1.2}
+.chip span{font-size:12px;color:var(--muted)}.chip b{font:500 26px var(--serif)}
+.chip[aria-pressed=true]{background:var(--forest);border-color:var(--forest);color:var(--lime)}.chip[aria-pressed=true] span{color:#B8CBBF}
+.chip:hover{border-color:var(--forest)}
+.courts{display:flex;flex-wrap:wrap;gap:12px}.court{flex:1 1 150px;padding:14px 18px;border:1.5px solid var(--line);border-radius:16px;background:var(--card);text-align:left;cursor:pointer;display:grid}
+.court b{font-weight:700}.court span{font-size:14px;color:var(--muted)}.court[aria-pressed=true]{border-color:var(--forest);box-shadow:inset 0 0 0 1.5px var(--forest)}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px}
+.slot{min-height:58px;border:1.5px solid var(--line);border-radius:10px;background:var(--card);cursor:pointer;display:grid;place-content:center;justify-items:center;line-height:1.25}
+.slot b{font-size:16px}.slot span{font-size:12px;color:var(--muted)}.slot:hover:not(:disabled){border-color:var(--forest)}
+.slot[aria-pressed=true]{background:var(--forest);border-color:var(--forest);color:var(--lime)}.slot[aria-pressed=true] span{color:#B8CBBF}
+.slot:disabled{background:#EFEBDF;cursor:not-allowed;color:#8A968D}.slot:disabled b{text-decoration:line-through}
+.legend{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:16px;font-size:14px;color:var(--muted)}.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:8px;border:1.5px solid #8A968D}
+.panel{position:sticky;top:92px;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:var(--shadow);display:grid;gap:18px}
+@media(max-width:1000px){.panel{position:static}}
+.kv{display:flex;justify-content:space-between;gap:16px;font-size:15px}.kv span{color:var(--muted)}.kv b{text-align:right;font-weight:500}
+.tot{display:flex;justify-content:space-between;align-items:baseline;padding-top:16px;border-top:1px solid var(--line)}.tot b{font:500 36px var(--serif)}
+label{display:grid;gap:6px;font-weight:700;font-size:14px}
+input[type=text],input[type=tel],input[type=file]{width:100%;min-height:48px;padding:0 14px;border:1.5px solid #9AA79F;border-radius:10px;background:#fff}input[type=file]{padding:10px 12px}
+.err{margin:0;padding:12px 14px;border-radius:10px;background:#FBE0DC;color:#7A1E16;font-size:14px}
+.note{margin:0;font-size:14px;color:var(--muted)}
+.pill{padding:4px 12px;border-radius:999px;font-size:13px;font-weight:700;background:var(--warn);color:#4F3A00}.pill.ok{background:#CFEBD8;color:#0F4A2A}.pill.off{background:#E9E4D6;color:#5a5a50}
+.box{background:var(--bg);border-radius:16px;padding:16px;display:grid;gap:2px;font-size:15px}.box.dash{background:none;border:1.5px dashed #9AA79F}
+.opt{display:flex;justify-content:space-between;align-items:center;padding:0 16px;min-height:52px;border:1.5px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;width:100%}.opt[aria-pressed=true]{border-color:var(--forest);box-shadow:inset 0 0 0 1.5px var(--forest)}.opt b{font:500 20px var(--serif)}
+.qr{display:grid;justify-items:center;gap:8px;padding:20px;background:var(--bg);border-radius:16px}.qr svg{width:190px;height:190px;border-radius:8px;background:#fff}.qr b{font:600 34px var(--serif);letter-spacing:.08em}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.cc{background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;transition:transform .25s,box-shadow .25s}.cc:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.cc .ph{aspect-ratio:16/9;background:#0B2A1F center/cover;position:relative}.cc .ph svg{width:100%;height:100%;display:block}
+.cc .tag{position:absolute;left:14px;top:14px;background:rgba(6,22,15,.85);color:#E8F5D8;padding:5px 12px;border-radius:999px;font-size:13px;font-weight:700}
+.cc .bd2{padding:22px;display:flex;justify-content:space-between;align-items:center;gap:12px}.cc small{color:#1F6B45;font-weight:700}
+.dark{background:var(--forest);color:#F3F5EE}.dark .head p{color:#C3D2C8}.dark .eyebrow{color:var(--lime)}
+.pr{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.pc{border:1px solid #2A5C46;border-radius:24px;padding:32px;display:grid;gap:20px;background:#0F3527}.pc.hl{background:var(--lime);color:var(--forest);border-color:var(--lime)}
+.pc h3{font-size:28px}.pc div{display:grid;gap:2px;color:#C3D2C8;font-size:15px}.pc.hl div{color:#2A4A12}.pc b{font:500 52px/1.1 var(--serif);color:var(--lime)}.pc.hl b{color:var(--forest)}
+.pc p{margin:0;padding-top:16px;border-top:1px solid #2A5C46;font-size:14px;color:#C3D2C8}.pc.hl p{border-color:rgba(11,42,31,.25);color:#2A4A12}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:48px}@media(max-width:820px){.two{grid-template-columns:1fr}}
+ul.fa{list-style:none;margin:0;padding:0;display:grid;gap:10px}ul.fa li{padding-left:28px;position:relative}ul.fa li::before{content:"";position:absolute;left:0;top:.55em;width:14px;height:8px;border-left:2px solid #1F6B45;border-bottom:2px solid #1F6B45;transform:rotate(-45deg)}
+footer{background:#06160F;color:#9FB3A7;padding:32px 0;font-size:14px}footer .w{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="top"><div class="w"><a class="logo" href="#top"><svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#C9F23C"/><g fill="none" stroke="#0B2A1F" stroke-width="2.2" stroke-linejoin="round"><rect x="8" y="11" width="24" height="18" rx="2"/><path d="M20 11v18"/><circle cx="20" cy="20" r="4"/></g></svg><span class="bn">Gol Arena Futsal</span></a>
+<nav aria-label="Navigasi utama"><a href="#booking">Booking</a><a href="#lapangan">Lapangan</a><a href="#harga">Harga</a><a href="#kontak">Kontak</a></nav>
+<a class="btn bl" href="#booking" style="min-height:42px;padding:0 20px">Booking sekarang</a></div></header>
+<section class="hero" id="top"><div class="w"><span class="eyebrow" style="color:var(--lime)">Sewa lapangan futsal · Booking online</span>
+<h1>Pilih jam, <em>kunci lapangan,</em> langsung main.</h1>
+<p>Lihat jadwal kosong semua lapangan, bayar DP, lalu terima kode booking dan QR langsung di HP.</p>
+<div class="row"><a class="btn bl" href="#booking">Cek jadwal</a><a class="btn b2" href="#lapangan">Lihat lapangan</a></div></div></section>
+<div class="w"><div class="facts" id="facts"></div></div>
+<section class="sec" id="booking"><div class="w"><div class="head"><span class="eyebrow">Booking</span><h2>Atur jadwal mainmu</h2><p>Jam yang sudah terisi otomatis terkunci dan terbuka lagi bila booking dibatalkan.</p></div>
+<div class="grid"><div>
+<div class="blk"><div class="step"><i>1</i><h3>Tanggal</h3></div><div class="dates" id="dates" role="group" aria-label="Pilih tanggal"></div></div>
+<div class="blk"><div class="step"><i>2</i><h3>Lapangan</h3></div><div class="courts" id="courts" role="group" aria-label="Pilih lapangan"></div></div>
+<div class="blk"><div class="step"><i>3</i><h3>Jam main</h3></div><div class="slots" id="slots" role="group" aria-label="Pilih jam"></div>
+<div class="legend"><span><i></i>Tersedia</span><span><i style="background:#0B2A1F;border-color:#0B2A1F"></i>Dipilih</span><span><i style="background:#EFEBDF"></i>Tidak tersedia</span></div><p class="note" id="priceNote" style="margin-top:12px"></p></div>
+</div><aside class="panel" id="panel" aria-live="polite"></aside></div></div></section>
+<section class="sec" id="lapangan" style="background:#fff"><div class="w"><div class="head"><span class="eyebrow">Lapangan</span><h2>Pilih lapangan favoritmu</h2><p>Setiap lapangan dipesan per jam.</p></div><div class="cards" id="cards"></div></div></section>
+<section class="sec dark" id="harga"><div class="w"><div class="head"><span class="eyebrow">Harga</span><h2>Harga per jam</h2><p>Tarif per jam untuk satu lapangan. Total terhitung otomatis.</p></div><div class="pr" id="prices"></div></div></section>
+<section class="sec" id="kontak"><div class="w two"><div class="head" style="margin:0"><span class="eyebrow">Kontak & lokasi</span><h2>Datang dan main</h2><p id="addr"></p><div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:8px"><a class="btn b1" id="wa" target="_blank" rel="noopener">Chat WhatsApp</a><a class="btn b2" id="map" target="_blank" rel="noopener">Buka peta</a></div></div><div id="fac"></div></div></section>
+<footer><div class="w"><span>© <span class="bn">Gol Arena Futsal</span></span><span id="sys">Memeriksa sistem…</span></div></footer>
+<script>
+function makeQr(text) {
+    const bytes = [];
+    for (let i = 0; i < text.length; i++) bytes.push(text.charCodeAt(i) & 255);
+    const EC = [null, [10, 1, 26], [16, 1, 44], [26, 1, 70], [18, 2, 100], [24, 2, 134], [16, 4, 172]];
+    const ALIGN = [null, [], [6, 18], [6, 22], [6, 26], [6, 30], [6, 34]];
+    let ver = 0;
+    for (let v = 1; v <= 6; v++) {
+      const e = EC[v];
+      if (bytes.length <= e[2] - e[0] * e[1] - 2) { ver = v; break; }
+    }
+    if (!ver) return null;
+    const ecLen = EC[ver][0];
+    const nb = EC[ver][1];
+    const dataCW = EC[ver][2] - ecLen * nb;
+    const bits = [];
+    const put = (val, len) => { for (let i = len - 1; i >= 0; i--) bits.push((val >>> i) & 1); };
+    put(4, 4);
+    put(bytes.length, 8);
+    bytes.forEach((b) => put(b, 8));
+    const capBits = dataCW * 8;
+    put(0, Math.min(4, capBits - bits.length));
+    while (bits.length % 8) bits.push(0);
+    let pi = 0;
+    while (bits.length < capBits) { put(pi % 2 === 0 ? 0xEC : 0x11, 8); pi++; }
+    const data = [];
+    for (let i = 0; i < bits.length; i += 8) {
+      let b = 0;
+      for (let j = 0; j < 8; j++) b = (b << 1) | bits[i + j];
+      data.push(b);
+    }
+    const exp = new Array(512);
+    const log = new Array(256);
+    let gx = 1;
+    for (let i = 0; i < 255; i++) { exp[i] = gx; log[gx] = i; gx <<= 1; if (gx & 256) gx ^= 285; }
+    for (let i = 255; i < 512; i++) exp[i] = exp[i - 255];
+    const mul = (a, b) => (a === 0 || b === 0 ? 0 : exp[log[a] + log[b]]);
+    const genPoly = (n) => {
+      let g = [1];
+      for (let i = 0; i < n; i++) {
+        const ng = new Array(g.length + 1).fill(0);
+        for (let j = 0; j < g.length; j++) { ng[j] ^= g[j]; ng[j + 1] ^= mul(g[j], exp[i]); }
+        g = ng;
+      }
+      return g;
+    };
+    const rs = (blk, n) => {
+      const g = genPoly(n);
+      const res = new Array(n).fill(0);
+      blk.forEach((b) => {
+        const f = b ^ res[0];
+        res.shift();
+        res.push(0);
+        if (f !== 0) for (let i = 0; i < n; i++) res[i] ^= mul(g[i + 1], f);
+      });
+      return res;
+    };
+    const per = dataCW / nb;
+    const dbl = [];
+    const ebl = [];
+    for (let i = 0; i < nb; i++) {
+      const blk = data.slice(i * per, (i + 1) * per);
+      dbl.push(blk);
+      ebl.push(rs(blk, ecLen));
+    }
+    const words = [];
+    for (let i = 0; i < per; i++) dbl.forEach((b) => words.push(b[i]));
+    for (let i = 0; i < ecLen; i++) ebl.forEach((b) => words.push(b[i]));
+    const size = ver * 4 + 17;
+    const mod = [];
+    const fn = [];
+    for (let r = 0; r < size; r++) { mod.push(new Array(size).fill(false)); fn.push(new Array(size).fill(false)); }
+    const setF = (x, y, dark) => { mod[y][x] = dark; fn[y][x] = true; };
+    for (let i = 0; i < size; i++) { setF(i, 6, i % 2 === 0); setF(6, i, i % 2 === 0); }
+    const finder = (cx, cy) => {
+      for (let dy = -4; dy <= 4; dy++) {
+        for (let dx = -4; dx <= 4; dx++) {
+          const dist = Math.max(Math.abs(dx), Math.abs(dy));
+          const x = cx + dx;
+          const y = cy + dy;
+          if (x >= 0 && x < size && y >= 0 && y < size) setF(x, y, dist !== 2 && dist !== 4);
+        }
+      }
+    };
+    finder(3, 3);
+    finder(size - 4, 3);
+    finder(3, size - 4);
+    const ap = ALIGN[ver];
+    for (let i = 0; i < ap.length; i++) {
+      for (let j = 0; j < ap.length; j++) {
+        if ((i === 0 && j === 0) || (i === 0 && j === ap.length - 1) || (i === ap.length - 1 && j === 0)) continue;
+        for (let dy = -2; dy <= 2; dy++) {
+          for (let dx = -2; dx <= 2; dx++) setF(ap[i] + dx, ap[j] + dy, Math.max(Math.abs(dx), Math.abs(dy)) !== 1);
+        }
+      }
+    }
+    const drawFormat = (mask) => {
+      const d5 = mask;
+      let rem = d5;
+      for (let i = 0; i < 10; i++) rem = (rem << 1) ^ ((rem >>> 9) * 0x537);
+      const fb = ((d5 << 10) | rem) ^ 0x5412;
+      const bit = (i) => ((fb >>> i) & 1) !== 0;
+      for (let i = 0; i <= 5; i++) setF(8, i, bit(i));
+      setF(8, 7, bit(6));
+      setF(8, 8, bit(7));
+      setF(7, 8, bit(8));
+      for (let i = 9; i < 15; i++) setF(14 - i, 8, bit(i));
+      for (let i = 0; i < 8; i++) setF(size - 1 - i, 8, bit(i));
+      for (let i = 8; i < 15; i++) setF(8, size - 15 + i, bit(i));
+      setF(8, size - 8, true);
+    };
+    drawFormat(0);
+    let bi = 0;
+    const totalBits = words.length * 8;
+    for (let right = size - 1; right >= 1; right -= 2) {
+      if (right === 6) right = 5;
+      for (let vert = 0; vert < size; vert++) {
+        for (let j = 0; j < 2; j++) {
+          const x = right - j;
+          const upward = ((right + 1) & 2) === 0;
+          const y = upward ? size - 1 - vert : vert;
+          if (!fn[y][x] && bi < totalBits) {
+            mod[y][x] = ((words[bi >>> 3] >>> (7 - (bi & 7))) & 1) !== 0;
+            bi++;
+          }
+        }
+      }
+    }
+    const applyMask = (m) => {
+      for (let y = 0; y < size; y++) {
+        for (let x = 0; x < size; x++) {
+          let inv = false;
+          if (m === 0) inv = (x + y) % 2 === 0;
+          else if (m === 1) inv = y % 2 === 0;
+          else if (m === 2) inv = x % 3 === 0;
+          else if (m === 3) inv = (x + y) % 3 === 0;
+          else if (m === 4) inv = (Math.floor(x / 3) + Math.floor(y / 2)) % 2 === 0;
+          else if (m === 5) inv = ((x * y) % 2) + ((x * y) % 3) === 0;
+          else if (m === 6) inv = (((x * y) % 2) + ((x * y) % 3)) % 2 === 0;
+          else inv = (((x + y) % 2) + ((x * y) % 3)) % 2 === 0;
+          if (!fn[y][x] && inv) mod[y][x] = !mod[y][x];
+        }
+      }
+    };
+    const penalty = () => {
+      let p = 0;
+      const lines = [];
+      for (let i = 0; i < size; i++) {
+        let row = '';
+        let col = '';
+        for (let j = 0; j < size; j++) { row += mod[i][j] ? '1' : '0'; col += mod[j][i] ? '1' : '0'; }
+        lines.push(row, col);
+      }
+      lines.forEach((s) => {
+        const runs = s.match(/0+|1+/g) || [];
+        runs.forEach((r) => { if (r.length >= 5) p += 3 + (r.length - 5); });
+        const m1 = s.match(/(?=10111010000)/g);
+        const m2 = s.match(/(?=00001011101)/g);
+        p += 40 * ((m1 ? m1.length : 0) + (m2 ? m2.length : 0));
+      });
+      for (let y = 0; y < size - 1; y++) {
+        for (let x = 0; x < size - 1; x++) {
+          const c = mod[y][x];
+          if (c === mod[y][x + 1] && c === mod[y + 1][x] && c === mod[y + 1][x + 1]) p += 3;
+        }
+      }
+      let dark = 0;
+      for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) if (mod[y][x]) dark++;
+      const k = Math.ceil(Math.abs(dark * 20 - size * size * 10) / (size * size)) - 1;
+      p += Math.max(0, k) * 10;
+      return p;
+    };
+    let best = 0;
+    let bestP = Infinity;
+    for (let m = 0; m < 8; m++) {
+      applyMask(m);
+      drawFormat(m);
+      const p = penalty();
+      if (p < bestP) { bestP = p; best = m; }
+      applyMask(m);
+    }
+    applyMask(best);
+    drawFormat(best);
+    let path = '';
+    for (let y = 0; y < size; y++) {
+      let x = 0;
+      while (x < size) {
+        if (mod[y][x]) {
+          let e = x;
+          while (e < size && mod[y][e]) e++;
+          path += 'M' + x + ' ' + y + 'h' + (e - x) + 'v1h-' + (e - x) + 'z';
+          x = e;
+        } else x++;
+      }
+    }
+    return { size: size, version: ver, path: path, modules: mod };
+}
+
+const $=s=>document.querySelector(s),esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const P=n=>n<10?'0'+n:''+n,fmt=n=>'Rp '+String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,'.'),hh=h=>P(h)+'.00';
+const DOW=['Min','Sen','Sel','Rab','Kam','Jum','Sab'],MON=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'],LONG=['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+const dk=d=>d.getFullYear()+'-'+P(d.getMonth()+1)+'-'+P(d.getDate()),pk=k=>{const a=k.split('-');return new Date(+a[0],a[1]-1,+a[2])};
+const we=k=>[0,6].includes(pk(k).getDay()),dl=k=>{const d=pk(k);return LONG[d.getDay()]+', '+d.getDate()+' '+MON[d.getMonth()]+' '+d.getFullYear()};
+const S={set:{courts:[]},taken:[],blocked:{},skew:0,today:dk(new Date()),di:0,ci:0,picked:[],stage:'select',b:null,name:'',phone:'',err:'',busy:false,dp:'min',proof:'',pname:'',perr:'',lc:'',lp:'',askC:false,days:[]};
+const now=()=>Date.now()+S.skew,mine=()=>{try{return JSON.parse(localStorage.getItem('golarena.mine')||'[]')}catch(e){return[]}};
+const tok={};function mineAdd(b,t){tok[b.code]=t;const l=mine().filter(x=>x.code!==b.code);l.push({id:b.id,code:b.code,token:t});try{localStorage.setItem('golarena.mine',JSON.stringify(l.slice(-20)))}catch(e){}}
+const tokOf=c=>tok[c]||(mine().find(x=>x.code===c)||{}).token||'';
+async function api(m,p,b){let r;try{r=await fetch(p,{method:m,headers:b?{'content-type':'application/json'}:undefined,body:b?JSON.stringify(b):undefined,cache:'no-store'})}catch(e){return{ok:0,error:'Tidak bisa terhubung ke server. Periksa internet lalu coba lagi.'}}
+let d=null;try{d=await r.json()}catch(e){}return r.ok?{ok:1,d}:{ok:0,code:d&&d.code,error:(d&&d.error)||'Terjadi kesalahan. Coba lagi sebentar.'}}
+const price=(k,h)=>{const s=S.set,n=h>=s.nightFrom;return we(k)?(n?s.priceWeekendNight:s.priceWeekendDay):(n?s.priceWeekdayNight:s.priceWeekdayDay)};
+const total=(k,hs)=>hs.reduce((t,h)=>t+price(k,h),0),dpMin=(k,t)=>Math.min(we(k)?S.set.dpWeekend:S.set.dpWeekday,t);
+const ranges=hs=>{const r=[];hs.slice().sort((a,b)=>a-b).forEach(h=>{const l=r[r.length-1];l&&l.e===h?l.e=h+1:r.push({s:h,e:h+1})});return r.map(x=>hh(x.s)+'–'+hh(x.e)).join(', ')};
+const eff=b=>b.status==='wait'&&b.holdUntil<now()?'expired':b.status,act=s=>['wait','verify','ok'].includes(s);
+const brand=()=>S.set.name||'Gol Arena Futsal',waBase=()=>'https://wa.me/'+(S.set.whatsapp||'').replace(/\D/g,'').replace(/^0/,'62')+'?text=';
+function takenMap(k){const m={};S.taken.forEach(b=>{if(b.date===k&&act(b.status==='wait'&&b.holdUntil<now()?'expired':b.status))b.hours.forEach(h=>m[b.court+'-'+h]=1)});return m}
+/* ---------- render ---------- */
+function rDates(){$('#dates').innerHTML=S.days.map((k,i)=>{const d=pk(k);return`<button class="chip" data-d="${i}" aria-pressed="${i===S.di}"><span>${DOW[d.getDay()]}</span><b>${d.getDate()}</b><span>${MON[d.getMonth()]}</span></button>`}).join('')}
+function rCourts(){$('#courts').innerHTML=S.set.courts.map((c,i)=>`<button class="court" data-c="${i}" aria-pressed="${i===S.ci}"><b>${esc(c.name)}</b>${c.type?`<span>${esc(c.type)}</span>`:''}</button>`).join('')}
+function rSlots(){const k=S.days[S.di],s=S.set,tm=takenMap(k),w=new Date(now()+7*36e5).getUTCHours(),td=k===S.today;let h='';
+for(let x=s.openHour;x<s.closeHour;x++){const off=tm[S.ci+'-'+x]||S.blocked[k+'|'+S.ci+'|'+x]||(td&&x<=w);h+=`<button class="slot" data-h="${x}" ${off?'disabled':''} aria-pressed="${S.picked.includes(x)}" aria-label="${hh(x)} ${off?'tidak tersedia':fmt(price(k,x))}"><b>${hh(x)}</b><span>${off?'Terisi':fmt(price(k,x)).replace('Rp ','')}</span></button>`}
+$('#slots').innerHTML=h;$('#priceNote').textContent=(we(k)?'Akhir pekan':'Hari kerja')+' · jam malam mulai '+hh(s.nightFrom)}
+function waMsg(b){return waBase()+encodeURIComponent(`Halo ${brand()}, kode booking ${b.code} a.n. ${b.name}, ${S.set.courts[b.court].name}, ${dl(b.date)} jam ${ranges(b.hours)}.`)}
+function rPanel(){const p=$('#panel'),k=S.days[S.di];
+if(S.stage==='select'){const hs=S.picked.slice().sort((a,b)=>a-b),t=total(k,hs),c=S.set.courts[S.ci]||{};
+p.innerHTML=`<h3>Ringkasan</h3><div style="display:grid;gap:10px"><div class="kv"><span>Tanggal</span><b>${dl(k)}</b></div><div class="kv"><span>Lapangan</span><b>${esc(c.name)}</b></div><div class="kv"><span>Jam</span><b>${hs.length?ranges(hs):'Belum dipilih'}</b></div><div class="kv"><span>Durasi</span><b>${hs.length} jam</b></div></div>
+<div class="tot"><span>Total</span><b>${fmt(t)}</b></div><div class="kv"><span>DP minimum</span><b>${fmt(hs.length?dpMin(k,t):0)}</b></div>
+<label>Nama pemesan<input id="nm" type="text" autocomplete="name" value="${esc(S.name)}" placeholder="Nama tim atau pemesan"></label>
+<label>Nomor WhatsApp<input id="ph" type="tel" autocomplete="tel" value="${esc(S.phone)}" placeholder="08xx xxxx xxxx"></label>
+${S.err?`<p class="err" role="alert">${esc(S.err)}</p>`:''}<button class="btn b1" id="go" ${hs.length&&!S.busy?'':'disabled'}>${S.busy?'Memproses…':'Lanjut bayar DP'}</button>
+<p class="note">Jam ditahan ${S.set.holdMinutes} menit setelah lanjut. Booking terkonfirmasi setelah admin memeriksa bukti transfer.</p><button class="q" data-a="look">Sudah punya kode? Cek atau batalkan</button>`}
+else if(S.stage==='pay'){const b=S.b,a=dpAmt(b),c=S.set.courts[b.court],s=S.set;
+p.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center"><h3>Bayar DP</h3><span class="pill" id="left"></span></div>
+<div class="box"><b>${esc(c.name)}</b><span>${dl(b.date)} · ${ranges(b.hours)}</span><span>a.n. ${esc(b.name)} · Total ${fmt(b.total)}</span></div>
+<div style="display:grid;gap:8px" role="group" aria-label="Nominal pembayaran">${[['min','DP minimum'],['half','DP 50%'],['full','Lunas']].map(([i,l])=>`<button class="opt" data-o="${i}" aria-pressed="${S.dp===i}"><span>${l}</span><b>${fmt(a[i])}</b></button>`).join('')}</div>
+<p class="note">Sisa ${fmt(b.total-a[S.dp])} dilunasi di lokasi.</p>
+<div class="box dash"><small style="letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700">Transfer ke</small>${s.bankNumber?`<b style="font-size:18px">${esc(s.bankName)} ${esc(s.bankNumber)}</b><span>a.n. ${esc(s.bankHolder)}</span>`:`<span>Rekening belum tersedia. Minta info lewat WhatsApp admin.</span><a class="btn b1" style="margin-top:8px;min-height:42px" target="_blank" rel="noopener" href="${waBase()}${encodeURIComponent('Halo, minta info transfer booking '+b.code)}">Minta info transfer</a>`}<span style="margin-top:6px">Jumlah transfer: <b>${fmt(a[S.dp])}</b></span></div>
+<label>Unggah bukti transfer<input id="pf" type="file" accept="image/*"></label>${S.perr?`<p class="err" role="alert">${esc(S.perr)}</p>`:''}${S.proof?`<img src="${S.proof}" alt="Pratinjau bukti" style="width:100%;max-height:240px;object-fit:contain;border-radius:12px;border:1px solid var(--line)">`:''}
+<button class="btn b1" id="send" ${S.proof&&!S.busy?'':'disabled'}>${S.busy?'Mengirim…':'Kirim bukti transfer'}</button><button class="q" data-a="cancel" style="color:var(--danger)">Batalkan booking ini</button>`;tickL()}
+else if(S.stage==='expired'){p.innerHTML=`<h3>Waktu habis</h3><p class="note" style="font-size:16px">Batas pembayaran lewat, jam dilepas kembali. Pilih jadwal lagi untuk booking baru.</p><button class="btn b1" data-a="reset">Pilih jadwal lagi</button>`}
+else if(S.stage==='ticket'){const b=S.b,st=eff(b),c=S.set.courts[b.court]||{name:''},L={wait:'Menunggu pembayaran',verify:'Menunggu verifikasi',ok:'Terkonfirmasi'}[st]||(st==='expired'?'Kedaluwarsa':'Dibatalkan'),q=b.code&&st==='ok'?makeQr('GOLARENA:'+b.code):null,M={wait:'Selesaikan pembayaran DP agar jam tetap terkunci.',verify:'Bukti transfer diterima. Admin sedang memeriksa, kamu akan dihubungi lewat WhatsApp.',ok:'Booking terkonfirmasi. Tunjukkan QR atau kode ini kepada admin di lokasi.'}[st]||'Booking ini sudah tidak aktif.';
+p.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px"><h3>Tiket booking</h3><span class="pill ${st==='ok'?'ok':act(st)?'':'off'}">${L}</span></div>
+<div class="qr">${q?`<svg viewBox="0 0 ${q.size+8} ${q.size+8}" role="img" aria-label="QR ${esc(b.code)}" shape-rendering="crispEdges"><rect width="100%" height="100%" fill="#fff"/><path d="${q.path}" transform="translate(4 4)"/></svg>`:''}<b>${esc(b.code)}</b></div><p class="note" style="font-size:15px">${M}</p>
+<div style="display:grid;gap:10px">${[['Atas nama',b.name],['Lapangan',c.name],['Tanggal',dl(b.date)],['Jam',ranges(b.hours)],['Total',fmt(b.total)],['DP dibayar',fmt(b.dpPaid||0)],['Sisa di lokasi',fmt(b.total-(b.dpPaid||0))]].map(x=>`<div class="kv"><span>${x[0]}</span><b>${esc(x[1])}</b></div>`).join('')}</div>
+<a class="btn b1" target="_blank" rel="noopener" href="${waMsg(b)}">Hubungi admin via WhatsApp</a>
+${act(st)?(S.askC?`<div class="box" role="alertdialog"><span>Yakin batalkan? Jam akan dilepas.</span><div style="display:flex;gap:8px;margin-top:8px"><button class="btn bd" data-a="docancel" style="flex:1">Ya, batalkan</button><button class="btn b2" data-a="keep" style="flex:1">Tidak</button></div></div>`:`<button class="btn bd" data-a="ask">Batalkan booking</button>`):''}
+${S.set.policy?`<p class="note">Ketentuan: ${esc(S.set.policy)}</p>`:''}<button class="q" data-a="reset">Buat booking baru</button>`}
+else{p.innerHTML=`<h3>Cek booking</h3><p class="note" style="font-size:15px">Masukkan kode dan nomor WhatsApp saat booking untuk melihat tiket atau membatalkan.</p>
+<label>Kode booking<input id="lc" type="text" autocapitalize="characters" value="${esc(S.lc)}" placeholder="GA-4F7K2"></label><label>Nomor WhatsApp<input id="lp" type="tel" value="${esc(S.lp)}" placeholder="08xx xxxx xxxx"></label>
+${S.err?`<p class="err" role="alert">${esc(S.err)}</p>`:''}<button class="btn b1" data-a="find" ${S.busy?'disabled':''}>Cari booking</button><button class="q" data-a="reset">Kembali ke jadwal</button>`}}
+function dpAmt(b){const m=Math.min(b.dpMin,b.total);return{min:m,half:Math.min(b.total,Math.max(b.dpMin,Math.round(b.total/2000)*1000)),full:b.total}}
+function tickL(){const e=$('#left');if(!e||!S.b)return;const l=S.b.holdUntil-now();if(l<=0&&S.b.status==='wait'){S.stage='expired';rPanel();sync();return}e.textContent='Sisa '+P(Math.floor(l/6e4))+':'+P(Math.floor(l/1e3)%60)}
+function rStatic(){const s=S.set,min=Math.min(s.priceWeekdayDay,s.priceWeekdayNight,s.priceWeekendDay,s.priceWeekendNight);
+document.querySelectorAll('.bn').forEach(e=>e.textContent=brand());
+$('#facts').innerHTML=[['Jam buka',hh(s.openHour)+'–'+hh(s.closeHour)],['Mulai dari',fmt(min)+'/jam'],['Lapangan',s.courts.length+' lapangan'],['DP mulai',fmt(s.dpWeekday)]].map(x=>`<div><small>${x[0]}</small><b>${x[1]}</b></div>`).join('');
+if(s.heroPhoto)document.querySelector('.hero').style.backgroundImage='url("'+String(s.heroPhoto).replace(/["\\\n\r()]/g,'')+'")';
+$('#cards').innerHTML=s.courts.map((c,i)=>`<article class="cc"><div class="ph" ${c.photo?`style="background-image:url('${String(c.photo).replace(/['"\\\n\r()]/g,'')}')"`:''}><span class="tag">Mulai ${fmt(min)} / jam</span>${c.photo?'':'<svg viewBox="0 0 560 315" aria-hidden="true"><rect width="560" height="315" fill="#0F3527"/><g fill="none" stroke="#6FA98A" stroke-width="3"><rect x="24" y="24" width="512" height="267" rx="6"/><path d="M280 24v267"/><circle cx="280" cy="157" r="40"/></g></svg>'}</div><div class="bd2"><div><h3>${esc(c.name)}</h3>${c.type?`<small>${esc(c.type)}</small>`:''}</div><a class="btn b1" href="#booking" data-pick="${i}" style="min-height:44px;padding:0 20px">Pilih</a></div></article>`).join('');
+const pc=(t,d,dv,n,nv,dp,hl)=>`<div class="pc${hl?' hl':''}"><h3>${t}</h3><div><span>Pagi–sore · ${hh(s.openHour)}–${hh(s.nightFrom)}</span><b>${fmt(d)}</b></div><div><span>Malam · ${hh(s.nightFrom)}–${hh(s.closeHour)}</span><b>${fmt(n)}</b></div><p>DP minimum <b style="font:700 15px var(--sans);color:inherit">${fmt(dp)}</b> per booking</p></div>`;
+$('#prices').innerHTML=pc('Senin – Jumat',s.priceWeekdayDay,0,s.priceWeekdayNight,0,s.dpWeekday)+pc('Sabtu – Minggu',s.priceWeekendDay,0,s.priceWeekendNight,0,s.dpWeekend,1);
+$('#addr').textContent=s.address||'';$('#wa').href=waBase()+encodeURIComponent('Halo '+brand()+', saya mau tanya soal booking lapangan futsal.');$('#map').href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(s.address||brand());
+const f=(s.facilities||'').split('\n').map(x=>x.trim()).filter(Boolean);$('#fac').innerHTML=f.length?`<h3 style="margin-bottom:16px">Fasilitas</h3><ul class="fa">${f.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}
+function all(){rDates();rCourts();rSlots();rPanel()}
+/* ---------- data ---------- */
+let syncing=0;async function sync(){if(syncing)return;syncing=1;try{const r=await api('GET','/api/public?days=15');if(!r.ok){if(!S.days.length)$('#panel').innerHTML=`<p class="err">${esc(r.error)}</p>`;return}
+const p=r.d;S.skew=p.now-Date.now();S.set=p.settings;S.taken=p.taken||[];S.blocked=p.blocked||{};S.today=p.today;const f=!S.days.length;
+S.days=Array.from({length:15},(_,i)=>{const d=pk(p.today);d.setDate(d.getDate()+i);return dk(d)});
+if(f){rStatic();all()}else{rSlots();if(S.stage==='select')rPanel()}}finally{syncing=0}}
+function reset(){Object.assign(S,{stage:'select',picked:[],b:null,err:'',proof:'',pname:'',perr:'',askC:false,dp:'min'});all()}
+function setB(b){S.b=b;S.stage='ticket'}
+document.addEventListener('input',e=>{const t=e.target;if(t.id==='nm')S.name=t.value;if(t.id==='ph')S.phone=t.value;if(t.id==='lc')S.lc=t.value;if(t.id==='lp')S.lp=t.value});
+document.addEventListener('change',e=>{if(e.target.id!=='pf'||!e.target.files[0])return;const fr=new FileReader();fr.onload=()=>{const im=new Image();im.onload=()=>{const r=Math.min(1,1100/im.width),c=document.createElement('canvas');c.width=Math.round(im.width*r);c.height=Math.round(im.height*r);const g=c.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);g.drawImage(im,0,0,c.width,c.height);S.proof=c.toDataURL('image/jpeg',.72);S.perr='';rPanel()};im.onerror=()=>{S.perr='File bukan gambar yang valid.';rPanel()};im.src=fr.result};fr.readAsDataURL(e.target.files[0])});
+document.addEventListener('click',async e=>{const t=e.target.closest('button,a');if(!t)return;const D=t.dataset;
+if(D.d!==undefined){S.di=+D.d;S.picked=[];rDates();rSlots();if(S.stage==='select')rPanel()}
+else if(D.c!==undefined){S.ci=+D.c;S.picked=[];rCourts();rSlots();if(S.stage==='select')rPanel()}
+else if(D.h!==undefined){const h=+D.h;S.picked=S.picked.includes(h)?S.picked.filter(x=>x!==h):S.picked.concat(h);S.err='';rSlots();rPanel()}
+else if(D.pick!==undefined){S.ci=+D.pick;S.picked=[];rCourts();rSlots();if(S.stage==='select')rPanel()}
+else if(D.o){S.dp=D.o;rPanel()}
+else if(t.id==='go'){if(S.name.trim().length<2){S.err='Isi nama pemesan (minimal 2 huruf).';return rPanel()}S.busy=true;S.err='';rPanel();
+const r=await api('POST','/api/book',{name:S.name,phone:S.phone,court:S.ci,date:S.days[S.di],hours:S.picked.slice().sort((a,b)=>a-b)});S.busy=false;
+if(!r.ok){S.err=r.error;if(['conflict','past'].includes(r.code)){S.picked=[];sync()}return rPanel()}mineAdd(r.d.booking,r.d.token);S.b=r.d.booking;S.stage='pay';S.picked=[];S.proof='';rPanel();sync()}
+else if(t.id==='send'){S.busy=true;S.perr='';rPanel();const r=await api('POST','/api/proof',{code:S.b.code,token:tokOf(S.b.code),proof:S.proof,choice:S.dp});S.busy=false;if(!r.ok){S.perr=r.error;return rPanel()}setB(r.d.booking);rPanel();sync()}
+else if(D.a==='look'){S.stage='look';S.err='';rPanel()}
+else if(D.a==='find'){S.busy=true;S.err='';rPanel();const r=await api('POST','/api/lookup',{code:S.lc.trim().toUpperCase(),phone:S.lp});S.busy=false;if(!r.ok){S.err=r.error;return rPanel()}mineAdd(r.d.booking,r.d.token);setB(r.d.booking);rPanel()}
+else if(D.a==='ask'){S.askC=true;rPanel()}else if(D.a==='keep'){S.askC=false;rPanel()}
+else if(D.a==='cancel'){S.stage='ticket';S.askC=true;rPanel();setB(S.b);rPanel()}
+else if(D.a==='docancel'){const r=await api('POST','/api/cancel',{code:S.b.code,token:tokOf(S.b.code)});S.askC=false;if(r.ok)S.b=r.d.booking;sync();rPanel()}
+else if(D.a==='reset')reset()});
+setInterval(tickL,1000);setInterval(()=>{if(!document.hidden)sync()},20000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)sync()});
+sync();api('GET','/api/health').then(r=>{$('#sys').textContent=r.ok?'Sistem booking online':'Sistem sedang gangguan'});
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+GOL ARENA FUTSAL - versi VERCEL (pelanggan + admin + database dalam satu proyek)
+
+ISI FOLDER
+  vercel.json        pengaturan Vercel (header keamanan, folder publik)
+  public/            halaman pelanggan dan halaman admin (rahasia)
+  api/               server: aturan booking, QR, notifikasi Telegram
+  api/_store.mjs     penyimpanan data (Upstash Redis) - pengganti Netlify Blobs
+
+PERBEDAAN DARI VERSI NETLIFY
+  Netlify punya database bawaan (Blobs). Vercel tidak, jadi database dipasang
+  gratis lewat Upstash Redis dari Vercel Marketplace (langkah 3 di bawah).
+  Data booking di Netlify TIDAK ikut pindah otomatis (mulai kosong di Vercel).
+
+CARA DEPLOY (lewat CLI, paling andal; perlu Node.js)
+  1. Buka Terminal DI DALAM folder ini, lalu:
+       npx vercel login
+       npx vercel link          (pilih/buat proyek, mis. goal-arenafutsal-pelanggan)
+  2. Pasang database:
+       Dashboard Vercel -> proyek -> tab Storage -> Create / Connect Database
+       -> pilih "Upstash Redis" (paket Free) -> Connect ke proyek ini.
+       Vercel otomatis menambah env KV_REST_API_URL dan KV_REST_API_TOKEN.
+  3. (Opsional) Ganti alamat rahasia admin: Settings -> Environment Variables ->
+       tambah ADMIN_KEY = teks rahasia baru (huruf kecil/angka/strip).
+       Tanpa ini, dipakai alamat lama: /a/qd9un-es2ju-g9whs-axk9m/
+  4. Deploy:
+       npx vercel --prod
+  5. Cek https://NAMA-PROYEK.vercel.app/api/health -> harus tampil {"ok":true,...}
+     Jika error "Database belum terhubung", ulangi langkah 2 lalu deploy ulang.
+
+ALTERNATIF: LEWAT GITHUB
+  Unggah folder ini ke repo GitHub -> vercel.com/new -> Import repo ->
+  Framework Preset: "Other" -> Deploy. Lalu pasang database (langkah 2) dan
+  klik Redeploy.
+
+SETELAH BERHASIL
+  Halaman pelanggan : https://NAMA-PROYEK.vercel.app/
+  Halaman ADMIN     : https://NAMA-PROYEK.vercel.app/a/qd9un-es2ju-g9whs-axk9m/
+  Buka admin -> tab Pengaturan: isi Token bot Telegram dan Chat ID untuk
+  notifikasi bukti transfer (ada tombol "Kirim tes ke Telegram").
